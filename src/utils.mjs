@@ -9,7 +9,7 @@ export const shortenURL = (db, url) => db
   .findOneAndUpdate({ originalURL: url }, {
     $setOnInsert: {
       originalURL: url,
-      emojiID: nanoid()
+      emojiID: nanoid(10)
         .split('')
         .map(() => emoji.random().emoji)
         .join('')

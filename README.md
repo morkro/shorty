@@ -7,7 +7,8 @@
 
 This is just a technical concept for me to learn new technologies, namely:
 
-- Modules `.mjs` in Node.js via `--experimental-modules`
+- *Modules*: `.mjs` in Node.js via `--experimental-modules`
 - MongoDB
+- Hapi.js
 - Punycode domains (`https://🔗.moritz.berlin`)
-- Deploying to a service I haven't used in a while
+- Deploying to a service I haven't used in a while (Heroku)

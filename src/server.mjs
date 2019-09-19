@@ -1,18 +1,22 @@
+import path from 'path'
 import Hapi  from '@hapi/hapi'
 import mongodb  from 'mongodb'
 import inert from 'inert'
 import routes from './routes/index.mjs'
 
-const createServer = () => Hapi.server({
-  port: 9000,
-  host: 'localhost',
-  routes: {
-    files: {
-      // relativeTo: path.join(__dirname, 'public')
-      relativeTo: './public'
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
+
+function createServer () {
+  return Hapi.server({
+    port: 9000,
+    host: 'localhost',
+    routes: {
+      files: {
+        relativeTo: path.join(__dirname, '..', 'public')
+      }
     }
-  }
-})
+  })
+}
 
 export default async function server () {
   const { MongoClient } = mongodb
@@ -22,7 +26,7 @@ export default async function server () {
 
   try {
     const client = await MongoClient.connect(
-      process.env.DATABASE,
+      process.env.MONGODB_URI,
       { useNewUrlParser: true }
     )
     server.app.db = client.db('shortener')
@@ -30,6 +34,17 @@ export default async function server () {
     console.error('Failed to connect to the database', error)
     process.exit(1)
   }
+
+  server.route({
+    method: 'GET',
+    path: '/assets/{param*}',
+    handler: {
+      directory: {
+        path: './assets/',
+        index: false,
+      }
+    }
+  })
 
   for (const [key, value] of Object.entries(routes)) {
     server.route(value)

@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Moritz Kröger <write@moritz.berlin>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hapi/hapi": "^18.3.2",
     "@hapi/joi": "^15.1.1",

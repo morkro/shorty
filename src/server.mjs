@@ -35,17 +35,6 @@ export default async function server () {
     process.exit(1)
   }
 
-  server.route({
-    method: 'GET',
-    path: '/assets/{param*}',
-    handler: {
-      directory: {
-        path: './assets/',
-        index: false,
-      }
-    }
-  })
-
   for (const [key, value] of Object.entries(routes)) {
     server.route(value)
   }

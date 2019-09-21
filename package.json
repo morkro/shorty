@@ -9,6 +9,9 @@
     "db": "mongo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "12.5.0"
+  },
   "author": "Moritz Kröger <write@moritz.berlin>",
   "license": "MIT",
   "dependencies": {

@@ -29,7 +29,7 @@ export default async function server () {
       process.env.MONGODB_URI,
       { useNewUrlParser: true }
     )
-    server.app.db = client.db(MONGODB_NAME)
+    server.app.db = client.db(process.env.MONGODB_NAME)
   } catch (error) {
     console.error('Failed to connect to the database', error)
     process.exit(1)

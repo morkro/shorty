@@ -8,7 +8,7 @@ const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 function createServer () {
   return Hapi.server({
-    port: 9000,
+    port: process.env.PORT || 9000,
     host: 'localhost',
     routes: {
       files: {
